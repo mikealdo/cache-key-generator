@@ -1,31 +1,33 @@
 package cz.mikealdo.cache.key;
 
+import org.assertj.core.api.Assertions;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class CacheKeyGeneratorTest {
-    
-    private CacheKeyGenerator cacheKeyGenerator;// = new CacheKeyGenerator();
+
+    private static final String ENCODED_KEY = "MjAxNjEwMjgxNTMxIyMzNDUyMzQ1LTI0NS0yNDM1MjM0NTIzNDU=";
+    private static final String INPUT_HASH = "3452345-245-243523452345";
+    private final CacheKeyGenerator keyGenerator = new CacheKeyGenerator();
 
     @Test
     public void shouldProduceValidCacheKey() throws Exception {
-        DateTime currentTime = new DateTime(2016, 10, 28, 15, 31);
-        String competitionHash = "3452345-245-243523452345";
+        final DateTime currentTime = new DateTime(2016, 10, 28, 15, 31);
 
-        String key = cacheKeyGenerator.generateKey(new CacheKeyDescriptor(currentTime, competitionHash));
+        final String key = keyGenerator.generateKey(new
+                CacheKeyDescriptor(currentTime, CacheKeyGeneratorTest
+                .INPUT_HASH));
 
-        assertThat(key).isEqualTo("MjAxNjEwMjgxNTMxIyMzNDUyMzQ1LTI0NS0yNDM1MjM0NTIzNDU=");
+        Assertions.assertThat(key).isEqualTo(CacheKeyGeneratorTest.ENCODED_KEY);
     }
 
     @Test
     public void shouldDecodeCacheKey() throws Exception {
-        String decodedKey = "MjAxNjEwMjgxNTMxIyMzNDUyMzQ1LTI0NS0yNDM1MjM0NTIzNDU=";
+        final CacheKeyDescriptor descriptor = keyGenerator.decodeKey
+                (CacheKeyGeneratorTest.ENCODED_KEY);
 
-        CacheKeyDescriptor descriptor = cacheKeyGenerator.decodeKey(decodedKey);
-
-        assertThat(descriptor.getCompetitionHash()).isEqualTo("3452345-245-243523452345");
-        assertThat(descriptor.getCurrentTime()).isEqualTo(new DateTime(2016, 10, 28, 15, 31));
+        Assertions.assertThat(descriptor.getHash()).isEqualTo
+                (CacheKeyGeneratorTest
+                .INPUT_HASH);
     }
 }
