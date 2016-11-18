@@ -50,7 +50,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.5.1</version>
+                    <version>2.7</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -67,7 +67,7 @@
                 <plugin>
                     <groupId>com.qulice</groupId>
                     <artifactId>qulice-maven-plugin</artifactId>
-                    <version>0.16.4</version>
+                    <version>0.17.1</version>
                     <configuration>
                         <license>
                             file:${basedir}/src/main/resources/LICENSE.txt
@@ -80,6 +80,7 @@
                     <executions>
                         <execution>
                             <goals>
+                                <goal>instrument</goal>
                                 <goal>check</goal>
                             </goals>
                         </execution>
