@@ -16,10 +16,12 @@ env:
   matrix:
   - TERM=dumb
   global:
+after_success:
+    - mvn clean cobertura:cobertura coveralls:report
 deploy:
   provider: bintray
   file: deployBintray.json
   user: mdavidek1
   key:
     secure: PFuaEWohyTBUTjZLUxZUNso3QtNLfdQPTne2R7ManIdt5J5669N/BAHRRFgwsh1z+PGbSvVHzDm+qrniMg5YKZSMKHC4ee8Xaht7+N4KuPk9ICwP4eEL9353BUeFHUV67J8Sy0FpGX0wbZPPPurI+i2TmP4l20FbRm77GXT6NYtmdKhdKtVANWq1vFu44SEd+6lcpdR3jR+MMRKr1aJOSNFjT4ExrWEt0dCUiXFS+60bAViN/3xoWWPKt5NE0l5JOvmuRUikkb0Hgdta97FGBY7ID645LzMvF5elYxIRxxglwMz7DXPMGlLTOB8KO9keB37Z2QK1r/AQDtca0t9L0QWLpltQ17L8eObfn+VUv5KSDKbsCZcP9Rl3qDBt3nPEV75GwzPJujH2YBreci4g6eHni3huJgz9nyY2LEkxK8QYgvO5dkN5KbcXT9Vfz1oHO/fbI5VlysLTNlEcz0/k4EuCqeiJMTCPKn5MV0ZTdwbuWz7Rg1Yb+2ZZrzmC9IhR1l2pvGmR4s+AxZoskQsBXcmp3E3XKPHczx9QxQHQ1Er37TMi6W8BmEj0y95aZiNvL0csNy7TofRQpdZBxrYyjRgSEBMMC+1JuZfmVNI/sVvaKs6IVG9GzdLOfRsBggLhrPrLgIG00cIUVG9PZnBr92oWAQ2/YFtrZLwBX7u8LLY=
-  dry-run: true
+  dry-run: false
