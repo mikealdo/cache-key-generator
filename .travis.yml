@@ -8,7 +8,7 @@ before_script:
 - echo $JAVA_OPTS
 - export JAVA_OPTS=-Xmx512m
 script:
-- mvn clean compile qulice:instrument qulice:check install
+- mvn clean cobertura:cobertura qulice:check
 cache:
   directories:
   - "$HOME/.m2"
