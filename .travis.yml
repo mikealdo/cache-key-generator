@@ -8,7 +8,7 @@ before_script:
 - echo $JAVA_OPTS
 - export JAVA_OPTS=-Xmx512m
 script:
-- mvn clean cobertura:cobertura qulice:check
+- mvn clean cobertura:cobertura qulice:check install
 cache:
   directories:
   - "$HOME/.m2"
@@ -17,7 +17,7 @@ env:
   - TERM=dumb
   global:
 after_success:
-    - mvn clean cobertura:cobertura coveralls:report
+    - mvn coveralls:report
 deploy:
   provider: bintray
   file: deployBintray.json
