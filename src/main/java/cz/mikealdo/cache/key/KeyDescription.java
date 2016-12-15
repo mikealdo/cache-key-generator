@@ -10,13 +10,13 @@ package cz.mikealdo.cache.key;
 import org.joda.time.DateTime;
 
 /**
- * Descriptor used for cache key generator.
+ * Description used for generation of cache key.
  *
  * @author Michal Davidek (mdavidek1@gmail.com)
  * @version $Id$
  * @since 1.0
  */
-public final class CacheKeyDescriptor {
+public final class KeyDescription {
     /**
      * Time is used for checking if the cache should be invalidated or not.
      */
@@ -31,7 +31,7 @@ public final class CacheKeyDescriptor {
      * @param time Current time
      * @param hash String with hash under the value will be stored.
      */
-    public CacheKeyDescriptor(final DateTime time, final String hash) {
+    public KeyDescription(final DateTime time, final String hash) {
         this.time = time;
         this.hash = hash;
     }

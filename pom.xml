@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.5.2</version>
+            <version>3.6.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -43,6 +43,13 @@
             <version>${spring.framework.version}</version>
         </dependency>
     </dependencies>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>oss.sonatype.org</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <pluginManagement>
@@ -71,7 +78,7 @@
                 <plugin>
                     <groupId>com.qulice</groupId>
                     <artifactId>qulice-maven-plugin</artifactId>
-                    <version>0.17.1</version>
+                    <version>1.0-SNAPSHOT</version>
                     <configuration>
                         <license>
                             file:${basedir}/src/main/resources/LICENSE.txt
